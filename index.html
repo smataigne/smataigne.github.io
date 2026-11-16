@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simon Mataigne - Personal Webpage</title>
+        <style>
+            :root {
+                --ink: #1d2a44;
+                --muted: #60708f;
+                --primary: #536dca;
+                --primary-dark: #354a9b;
+                --surface: #ffffff;
+                --background: #eef2fb;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: "Segoe UI", Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                line-height: 1.7;
+                background:
+                    radial-gradient(circle at 10% 10%, rgba(128, 155, 238, 0.18), transparent 28rem),
+                    var(--background);
+                color: var(--ink);
+            }
+            header {
+                background: linear-gradient(120deg, #263779, #5b74d2);
+                color: #fff;
+                padding: 56px 20px;
+                display: flex; /* Flexbox to align items horizontally */
+                align-items: center; /* Vertically align items */
+                justify-content: center; /* Center-align content horizontally */
+                gap: 24px;
+                box-shadow: 0 12px 30px rgba(39, 57, 118, 0.22);
+            }
+            header img {
+                width: 128px; /* Adjust the size of the image */
+                height: 128px;
+                object-fit: cover;
+                border-radius: 50%; /* Optional: make the image circular */
+                border: 5px solid rgba(255, 255, 255, 0.75);
+                box-shadow: 0 8px 20px rgba(20, 30, 75, 0.3);
+            }
+            header h1 {
+                margin: 0;
+                font-size: clamp(2rem, 5vw, 3.2rem);
+                letter-spacing: 0.02em;
+            }
+            header p {
+                margin: 8px 0 0;
+                color: #e7ebff;
+                font-size: 1.05rem;
+            }
+            header a {
+                color: #fff;
+                font-weight: bold;
+            }
+            nav {
+                text-align: center;
+                padding: 16px;
+                background: rgba(255, 255, 255, 0.92);
+                border-bottom: 1px solid rgba(83, 109, 202, 0.12);
+                box-shadow: 0 8px 22px rgba(39, 57, 118, 0.1);
+                position: sticky;
+                top: 0;
+                z-index: 1;
+            }
+            nav button {
+                margin: 5px;
+                padding: 10px 17px;
+                border: 1px solid transparent;
+                border-radius: 999px;
+                background: none;
+                color: var(--muted);
+                font-weight: bold;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            }
+            nav button:hover, nav button.active {
+                background-color: var(--primary);
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 12px rgba(83, 109, 202, 0.25);
+            }
+            nav button:focus-visible {
+                outline: 3px solid rgba(83, 109, 202, 0.35);
+                outline-offset: 2px;
+            }
+            .container {
+                width: min(100% - 40px, 980px);
+                margin: 42px auto;
+            }
+            .page {
+                position: relative;
+                margin: 20px 0;
+                padding: clamp(26px, 5vw, 48px);
+                background-color: var(--surface);
+                border: 1px solid rgba(83, 109, 202, 0.1);
+                border-radius: 18px;
+                box-shadow: 0 18px 45px rgba(39, 57, 118, 0.12);
+                overflow: hidden;
+            }
+            .page::before {
+                content: "";
+                display: block;
+                width: 64px;
+                height: 5px;
+                margin-bottom: 24px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, var(--primary), #8aa2f0);
+            }
+            .page h2 {
+                margin-top: 0;
+                color: var(--primary-dark);
+                font-size: clamp(1.5rem, 3vw, 2rem);
+            }
+            .page h2:not(:first-of-type) {
+                margin-top: 36px;
+            }
+            .page a {
+                color: var(--primary-dark);
+                font-weight: 600;
+            }
+            .page li {
+                margin: 10px 0;
+            }
+            .page[hidden] {
+                display: none;
+            }
+            footer {
+                text-align: center;
+                padding: 22px 0;
+                background: var(--ink);
+                color: #fff;
+                margin-top: 42px;
+            }
+            footer p {
+                margin: 0;
+                color: #cbd4f5;
+            }
+            @media (max-width: 600px) {
+                header {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 42px 20px;
+                }
+                nav {
+                    padding: 10px;
+                }
+                nav button {
+                    padding: 8px 12px;
+                    font-size: 0.92rem;
+                }
+                .container {
+                    width: min(100% - 24px, 980px);
+                    margin: 24px auto;
+                }
+            }
+        </style>
+    </head>
+<body>
+
+    <header>
+        <img src="photo_simon_mataigne_revue.jpg" alt="Profile Photo">
+        <div>
+            <h1>Simon Mataigne</h1>
+            <p>FNRS PhD Research Fellow - <a href="https://scholar.google.com/citations?user=EYwAhloAAAAJ&hl=en">Scholar</a> </p>
+        </div>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <button type="button" class="active" data-section="home">About Me</button>
+        <button type="button" data-section="research">Publications</button>
+        <button type="button" data-section="conferences">Conferences</button>
+        <button type="button" data-section="teaching">Teaching</button>
+        <button type="button" data-section="awards">Grants</button>
+        <button type="button" data-section="contact">Contact</button>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="page">
+            <h2>About Me</h2>
+            <p> Hello! My name is Simon Mataigne and I am a passionate engineer in applied mathematics. I graduated from UCLouvain, Belgium, in 2023 and I am currently PhD student at the same university. My work is supervised by <a href="https://sites.uclouvain.be/absil/">Pierre-Antoine Absil</a> (UCLouvain) and <a href="https://www.ninamiolane.com/">Nina Miolane</a> (UC Santa Barbara). My work is funded by the Fonds de la Recherche Scientifique - F.R.S.-FNRS.</p>
+            <p> My research interests are about matrix manifolds, numerical linear algebra and optimization. I am particularly interested in computational and theoretical questions regarding the Riemannian logarithm on the Stiefel manifold and eigenvalue problems of normal matrices. </p>
+                
+            <p> I am a member of the Society for Industrial and Applied Mathematics (SIAM) and the International Linear Algebra Society (ILAS). </p>
+        </section>
+
+        <section id="research" class="page" hidden>
+            <h2> Preprints</h2>
+            <ul>
+                <li> Goyens, F., Mataigne, S., Absil, P.-A., <a href="https://arxiv.org/abs/2605.31505">The sketched landing method for large-scale optimization under orthogonality constraints</a>, preprint, arxiv (2026) </li>
+                <li> Mataigne, S., Absil, P.-A., <a href="https://arxiv.org/abs/2605.26317">A Jacobi-like algorithm for normal matrices by the skew-symmetric part</a>, preprint, arxiv (2026) </li>
+                <li> Mathe, J., Myers, A., Mataigne, S., Miolane, N., <a href="https://arxiv.org/abs/2605.07270">bispectrum: Selective G-Bispectra Made Practical</a>, preprint, arxiv (2026) </li>
+            </ul>
+            <h2> Journal papers </h2>
+            <ul>
+                <li> Stoye, J., Mataigne, S., Absil, P.-A., Zimmermann, R., <a href="https://doi.org/10.1007/s10543-026-01141-9">Shortest geodesic loops, sectional curvature, and injectivity radius of the Stiefel manifold</a>, BIT Numerical Mathematics, 66, 42 (2026) </li>
+                <li> Mataigne, S., Gallivan, Kyle A., <a href="https://doi.org/10.13001/ela.2026.9957">The eigenvalue decomposition of normal matrices by the skew-symmetric part</a>, Electronic Journal of Linear Algebra, 42, 349-386 (2026) </li>
+                <li> Mataigne, S., Absil, P.-A., Miolane, N., <a href="https://doi.org/10.1016/j.laa.2025.10.003">Bounds on the geodesic distances on the Stiefel manifold for a family of Riemannian metrics</a>, Linear Algebra and its Applications, 730, 1-34 (2026) </li>
+                <li> Absil, P.-A., Mataigne, S., <a href="https://doi.org/10.1137/24M1644808">The Ultimate Upper Bound on the Injectivity Radius of the Stiefel Manifold</a>, SIAM Journal on Matrix Analysis and Applications, 46(2), 1145-1167 (2025) </li>
+                <li> Mataigne, S., Zimmermann, R., Miolane, N., <a href="https://doi.org/10.1137/24M1647801">An Efficient Algorithm for the Riemannian Logarithm on the Stiefel Manifold for a Family of Riemannian Metrics</a>, SIAM Journal on Matrix Analysis and Applications, 46(2), 879-905 (2025) </li>
+            </ul>
+            <h2> Conference papers </h2>
+            <ul>
+                <li> Mataigne, S., Absil, P.-A., Miolane, N., <a href="https://doi.org/10.1007/978-3-032-03921-7_2">On the Approximation of the Riemannian Barycenter</a>, in Geometric Science of Information (GSI 2025), Lecture Notes in Computer Science, vol. 16034, Springer, pp. 12-21 (2026) </li>
+                <li> Mataigne, S., Mathe, J., Sanborn, S., Hillar, C., Miolane, N.,  <a href="https://arxiv.org/abs/2408.07072">The Selective G-Bispectrum and its Inversion: Applications to G-Invariant Networks</a>, Advances in Neural Information Processing Systems (NeurIPS), 37, 115682-115711 (2024) </li>
+            </ul>
+        </section>
+
+        <section id ="conferences" class="page" hidden>
+            <h2> Conferences, talks and seminars </h2>
+            <ul>
+                <li> <a href="https://controlo2026.apca.pt/">Controlo 2026</a> - 17th APCA International Conference on Automatic Control and Soft Computing - 9-11 September 2026 - Coimbra, Portugal - talk. </li>
+                <li> <a>Peyresq 2026</a> - Ecole doctorale d'été en épistémologie - 3-7 August 2026 - Peyresq, France. </li>
+                <li> <a href ="https://www.mfo.de/www/activity/2630"> Workshop "Geometric Methods in Optimization and Numerical Analysis"</a> - 19-24 July 2026 - Oberwolfach, Germany - talk. </li>
+                <li> <a href="https://www.siam.org/conferences-events/siam-conferences/op26/">SIAM OP26</a> - SIAM Conference on Optimization - 2-5 June 2026 - Edinburgh, UK - talk. </li>
+                <li> <a href="https://ilas2026.math.vt.edu/index.html">ILAS 2026</a> - International Linear Algebra Society Conference - 18-22 May 2026 - Blacksburg, VA - talk. </li>
+                <li> <a href="https://search.epfl.ch/?filter=unit&q=ANCHP">Seminar</a> - Institute of Mathematics -  18-23 January 2026 - Lausanne, Switzerland - talk.</li>
+                <li> <a href="https://www.mfo.de/www/activity/2550b">Mini-Workshop "Approximation of Manifold-Valued Functions"</a> - 7-12 December 2025 - Oberwolfach, Germany - talk. </li>
+                <li> <a href="https://conference-gsi.org/">GSI 2025</a> - 7th International Conference on Geometric Science of Information - 29-31 October 2025 - St-Malo, France - talk. </li>
+                <li> <a href="https://sites.uclouvain.be/socn/drupal/socn/node/453">SOCN Study Day 2025</a> - Systems, Optimization, Control and Networks Study Day - 26 September 2025 - Mons, Belgium - talk and poster.</li>
+                <li> <a href="https://enumath2025.eu/">ENUMATH 2025</a> - European Conference on Numerical Mathematics and Advanced Applications - 1-5 September 2025 - Heidelberg, Germany - talk. </li>
+                <li> <a href="https://sites.google.com/view/iccopt2025/home">ICCOPT 2025</a> - 2025 International Conference on Continuous Optimization - 19-24 July 2025 - Los Angeles, CA - talk. </li>
+                <li> <a href="https://neurips.cc/">NeurIPS 2024</a> - 38th Annual Conference on Neural Information Processing Systems - 9-15 December 2024 - Vancouver, Canada - poster </li>
+                <li> <a href="https://sites.uclouvain.be/socn/drupal/socn/study-day-oct2024">SOCN Study Day 2024 </a>- Systems, Optimization, Control and Networks Study Day- 29 October 2024 - Louvain-la-Neuve, Belgium - talk and poster.</li>
+                <li> <a href="https://mtns2024.eng.cam.ac.uk">MTNS 2024 </a> -26th International Symposium on Mathematical Theory of Networks and Systems - 19-23 August 2024 - Cambridge, UK - talk.</li>
+                <li> <a href="https://www.siam.org/conferences-events/past-event-archive/la24/">SIAM LA24</a> - SIAM Conference on Applied Linear Algebra - 13-17 May 2024 - Paris, France - talk.</li>
+                <li> <a href="https://www.esat.kuleuven.be/stadius/E/DEEPK2024/">DEEPK2024</a> - International Workshop on Deep Learning and Kernel Machines - 7-8 March 2024 - Leuven, Belgium - poster. </li>
+                <li> <a href="https://scoop.iwr.uni-heidelberg.de/events/2023_eucco/">EUCCO 2023</a> - 6th European Conference on Computational Optimization - 25-27 September 2023 - Heidelberg, Germany - talk.</li>
+                <li> <a href="https://conference-gsi.org/">GSI 2023</a> - 6th International Conference on Geometric Science of Information - 30-1 September 2023 - St-Malo, France - poster.</li>
+            </ul>
+        </section>
+        <section id="teaching" class="page" hidden>
+            <h2>Teaching</h2>
+            <h3>UCLouvain - Ecole Polytechnique de Louvain (EPL)</h3>
+            <ul>
+                <li> <a href="https://uclouvain.be/en-cours-2024-linma1315">LINMA1315: Compléments d'analyse</a>, teaching assitant, 2024-today.</li>
+                <li> <a href ="https://uclouvain.be/en-cours-2025-linma2380">LINMA2380: Matrix Computations</a>, teaching assistant, 2025. </li>
+                <li> <a href="https://uclouvain.be/cours-2024-linma2361">LINMA2361: Nonlinear dynamical systems</a>, teaching assitant, 2024. </li>
+                <li> <a href="https://uclouvain.be/en-cours-2024-lepl1103">LEPL1103: Equations aux dérivées partielles et analyse complexe</a>, teaching assitant, 2024-2025.</li>
+                <li> <a href="https://uclouvain.be/en-cours-2023-linma2491">LINMA2491: Operational research</a>, teaching assitant, 2024.</li>
+            </ul>
+        </section>
+
+        <section id="awards" class="page" hidden>
+            <h2>Grants</h2>
+            <ul>
+                <li> 2023-2027 - PhD Research Fellow (Aspirant), Fonds de la Recherche Scientifique - F.R.S.-FNRS.</li>
+                <li> 2022 - MIT-Belgium Program Scholarship - Granted by International Lhoist Berghmans Innovation Chair. </li>
+            </ul>
+
+        </section>
+
+        <section id="contact" class="page" hidden>
+            <h2>Contact</h2>
+            <p>You can reach me at <a href="mailto:simon.mataigne@uclouvain.be">simon.mataigne@uclouvain.be</a>.</p>
+        </section>  
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Simon Mataigne</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll(".page");
+        const menuButtons = document.querySelectorAll("nav button");
+
+        function showSection(sectionId) {
+            const selectedSection = document.getElementById(sectionId);
+            if (!selectedSection) {
+                return;
+            }
+
+            sections.forEach((section) => {
+                section.hidden = section !== selectedSection;
+            });
+            menuButtons.forEach((button) => {
+                button.classList.toggle("active", button.dataset.section === sectionId);
+            });
+        }
+
+        menuButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                showSection(button.dataset.section);
+            });
+        });
+    </script>
+
+</body>
+</html>
